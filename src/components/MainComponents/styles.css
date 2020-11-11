@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+label {
+  font-size: 14px !important;
+}
+/* Form Start */
+input.form-control {
+  padding: 5px;
+}
+/* Form End */
+
+/* Contacts component start */
+.contactsContainer {
+  margin-top: 4rem;
+  width: 800px;
+  max-width: 1000px;
+}
+.column-layout {
+  display: flex;
+  height: 560px;
+  margin-top: 1rem;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 10px;
+  /* padding: 2px 0px; */
+}
+
+.side-column {
+  flex: 1;
+  margin-right: 10px;
+  order: 2;
+  border-right: 1px solid rgb(212, 212, 212);
+}
+.main-column {
+  flex: 3;
+  order: 3;
+  padding-top: 10px;
+  position: relative;
+  overflow-y: scroll;
+}
+.list-group-item {
+  border: none;
+}
+.list-group-item.active {
+  background-color: #563d7c !important;
+  border: none;
+  outline: none;
+}
+
+/* Contacts app component end */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Pagination component starts */
+.pagination > li > a {
+  background-color: white;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #563d7c;
+}
+.pagination > li.active > a {
+  background-color: #563d7c !important;
+  border: none;
+}
+/* Pagination component end */
+
+@media only screen and (max-width: 1000px) {
+  .column-layout {
+    height: 700px;
+  }
+}
