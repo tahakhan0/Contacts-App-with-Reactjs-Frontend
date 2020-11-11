@@ -77,3 +77,41 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 700px;
   }
 }
+
+.btn-outline-primary {
+  color: #563d7c;
+  border-color: #563d7c;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem #563d7c;
+  background-color: #563d7c;
+  color: white;
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: white;
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #563d7c;
+}
