@@ -12,7 +12,7 @@ import {
 } from "./SchemaValidation";
 import { toast } from "react-toastify";
 
-export default function Form({ cancelNewContact, setAddNewContact }) {
+export default function Form({ cancelNewContact, addNewContact }) {
   const [nameField, setNameFields] = useState([
     {
       first_name: "",
@@ -99,7 +99,8 @@ export default function Form({ cancelNewContact, setAddNewContact }) {
     };
     try {
       await saveContacts(result);
-      setAddNewContact(false);
+      // setAddNewContact();
+      addNewContact(false);
       toast.success("Contact added successfully");
     } catch (error) {
       toast.error("An unexpected error occured");

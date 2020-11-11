@@ -30,7 +30,7 @@ function Contacts() {
   };
   useEffect(() => {
     getData();
-  }, [newContact, deleteContact]);
+  }, [deleteContact]);
 
   const getContactDetails = (d) => {
     setContactDetailsCard(d);
@@ -38,9 +38,9 @@ function Contacts() {
   };
   const listGroupStyle = "list-group-item list-group-item-action";
 
-  const addNewContact = () => {
-    setAddNewContact(!newContact);
-    setActiveContact(null);
+  const addNewContact = (displayNewContact) => {
+    setAddNewContact(displayNewContact);
+    setActiveContact(displayNewContact === true ? null : activeContact);
   };
   const cancelNewContact = () => {
     setAddNewContact(false);
@@ -96,7 +96,7 @@ function Contacts() {
           {newContact && (
             <Form
               cancelNewContact={data.length === 0 ? null : cancelNewContact}
-              setAddNewContact={setAddNewContact}
+              addNewContact={addNewContact}
             />
           )}
         </div>

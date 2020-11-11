@@ -8,7 +8,7 @@ export const SearchBar = ({ name, value, onChange, addNewContact }) => {
           <button
             className="btn btn-outline-primary"
             type="button"
-            onClick={() => addNewContact(true, null)}
+            onClick={() => addNewContact(true)}
           >
             Add a new contact
           </button>
