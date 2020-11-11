@@ -120,7 +120,7 @@ export const AddressField = ({
               <div className="col">
                 <div className="row">
                   {handleRemoveField && (
-                    <div className="col-12 col-sm-12 col-xl-2 pb-2 pb-xl-0">
+                    <div className="col-12 col-sm-12 col-xl-3 pb-2 pb-xl-0">
                       <button
                         type="button"
                         className="btn btn-outline-danger"
@@ -137,7 +137,7 @@ export const AddressField = ({
                     </div>
                   )}
                   {index >= addressField.length - 1 && handleAddField && (
-                    <div className="col-12 col-sm-12 col-xl-2">
+                    <div className="col-12 col-sm-12 col-xl-3">
                       <button
                         type="button"
                         className="btn btn-outline-primary"
