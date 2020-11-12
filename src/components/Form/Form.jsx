@@ -12,7 +12,7 @@ import {
 } from "./SchemaValidation";
 import { toast } from "react-toastify";
 
-export default function Form({ cancelNewContact, addNewContact }) {
+export default function Form({ cancelNewContact, saveNewContact }) {
   const [nameField, setNameFields] = useState([
     {
       first_name: "",
@@ -98,9 +98,11 @@ export default function Form({ cancelNewContact, addNewContact }) {
       social_media: [...socialMedia],
     };
     try {
-      await saveContacts(result);
-      // setAddNewContact();
-      addNewContact(false);
+      const { data } = await saveContacts(result);
+      const callfunction = () => {
+        saveNewContact(data);
+      };
+      callfunction();
       toast.success("Contact added successfully");
     } catch (error) {
       toast.error("An unexpected error occured");
@@ -118,7 +120,7 @@ export default function Form({ cancelNewContact, addNewContact }) {
             <button
               className="btn btn-warning"
               type="button"
-              onClick={() => cancelNewContact()}
+              onClick={() => cancelNewContact(false)}
             >
               Cancel
             </button>

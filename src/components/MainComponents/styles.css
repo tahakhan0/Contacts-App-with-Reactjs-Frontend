@@ -43,11 +43,12 @@ input.form-control {
 .list-group-item {
   border: none;
 }
-.list-group-item.active {
+
+/* .list-group-item.active {
   background-color: #563d7c !important;
   border: none;
   outline: none;
-}
+} */
 
 /* Contacts app component end */
 
@@ -74,7 +75,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media only screen and (max-width: 1000px) {
   .column-layout {
-    height: 700px;
+    height: 600px;
   }
 }
 
@@ -114,4 +115,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #563d7c;
+}
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #563d7c;
+  border-color: none;
 }

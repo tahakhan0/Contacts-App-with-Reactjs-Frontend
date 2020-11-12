@@ -23,65 +23,70 @@ function Contacts() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [displayNewContactForm,setDisplayContactForm] = useState(false)
   const pageSize = 10;
 
-  const [displayNewContactForm, setDisplayNewContactForm] = useState(false);
-
-  useEffect(() => {
-    const getData = async () => {
-      console.log("getdata is called");
-      const { data } = await getContacts();
-      if (data.length === 0) {
-        setContact({ addNewContact: true });
-      } else {
-        setData(data);
-        if (contact.updateContact === false || contact.deleteContact === true) {
-          setActiveContact({
-            currentContact: data[0].id,
-            currentContactDetails: data[0],
-          });
-        }
-      }
-      setLoading(false);
-    };
-    getData();
-    return () => {
-      console.log("component will unmout is called");
-    };
-  }, [contact]);
-
-  const toggleAddContactButton = (value) => {
-    if (value) {
-      setDisplayNewContactForm(value);
-      setActiveContact({ currentContact: "", currentContactDetails: "" });
+  const getData = async () => {
+    const { data } = await getContacts();
+    if (data.length === 0) {
+      setContact({ addNewContact: true });
     } else {
-      setDisplayNewContactForm(value);
+      setData(data);
       setActiveContact({
         currentContact: data[0].id,
         currentContactDetails: data[0],
       });
+      // call();
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getData();
+    return () => {
+      setActiveContact({
+        currentContact: "",
+        currentContactDetails: "",
+      });
+      console.log("called from component will unmount");
+    };
+  }, [contact]);
+
+  console.log(activeContact, "active contact");
+  // const handleAddNewContactButton = (value) => {
+  // if (value === true) {
+  //   setContact({ addNewContact: value });
+  //   setActiveContact({ currentContact: "", currentContactDetails: "" });
+  // }
+  // return value;
+  // };
+  // const handleCancelAddNewContactButton = (value) => {
+  //   setContact({ activeContact: value });
+  //   setActiveContact({
+  //     currentContact: data[0].id,
+  //     currentContactDetails: data[0],
+  //   });
+  // };
+
+  const toggleAddContactButton = (value) => {
+    if (value) {
+      setContact({ addNewContact: true });
     }
   };
 
   const getActiveContactDetails = (id) => {
     const response = data.find((d) => d.id === id);
-    console.log(id, response);
     setActiveContact({ currentContact: id, currentContactDetails: response });
   };
 
   const saveNewContact = (data) => {
-    setDisplayNewContactForm(false);
-    setContact({ addNewContact: true });
     setActiveContact({ currentContact: data.id, currentContactDetails: data });
+    setContact({ addNewContact: false });
   };
 
   const updateContactAfterEdit = (data) => {
     setContact({ updateContact: true });
-    setActiveContact({ currentContactDetails: data, currentContact: data.id });
-  };
-
-  const deleteContact = () => {
-    setContact({ deleteContact: true });
+    setActiveContact(data.id);
   };
 
   const listGroupStyle = "list-group-item list-group-item-action";
@@ -111,6 +116,8 @@ function Contacts() {
     );
   }
 
+  const { addNewContact } = contact;
+  // const activeContactDetails = getActiveContactDetails(activeContact);
   const { currentContact, currentContactDetails } = activeContact;
 
   return (
@@ -119,20 +126,19 @@ function Contacts() {
         value={searchQuery}
         onChange={handleQuery}
         name="search"
+        // addNewContact={handleAddNewContactButton}
         addNewContact={toggleAddContactButton}
       />
       <div className="column-layout">
         <div className="main-column">
-          {!displayNewContactForm &&
-            currentContact &&
-            currentContactDetails && (
-              <ContactDetails
-                contactDetailsCard={currentContactDetails}
-                updateContact={updateContactAfterEdit}
-                setDeleteContact={deleteContact}
-              />
-            )}
-          {displayNewContactForm && (
+          {!addNewContact && currentContact && currentContactDetails && (
+            <ContactDetails
+              contactDetailsCard={currentContactDetails}
+              updateContact={updateContactAfterEdit}
+              // setDeleteContact={deleteContact}
+            />
+          )}
+          {addNewContact && (
             <Form
               cancelNewContact={
                 data.length === 0 ? null : toggleAddContactButton
@@ -148,7 +154,6 @@ function Contacts() {
               <button
                 key={d.id}
                 type="button"
-                disabled={displayNewContactForm}
                 className={
                   currentContact === d.id
                     ? listGroupStyle + " active"

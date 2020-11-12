@@ -75,9 +75,10 @@ export default function EditForm({
     doSubmit();
   };
   const handleContactDelete = async (id) => {
+    console.log("handleContact delete", id);
     try {
       await deleteContact(id);
-      setDeleteContact(true);
+      setDeleteContact();
       toggleDisplayForm();
       toast.error("Contact is deleted");
     } catch (error) {

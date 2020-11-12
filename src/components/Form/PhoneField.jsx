@@ -22,7 +22,7 @@ export const PhoneField = ({
                   value={phone.number || ""}
                   name="number"
                   readOnly={handleChange ? false : true}
-                  placeholder="2010292102"
+                  placeholder="Example: 2013334000"
                   onChange={(event) =>
                     handleChange(index, event, phoneField, setPhoneField)
                   }
