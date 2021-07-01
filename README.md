@@ -1,26 +1,25 @@
 
 
-# A contacts app made using reactsjs, toastify notifications, and bootstrap 4.
+## A contacts app made using react.js, toastify notifications, and bootstrap 4.
 
-### The project is divided into:
+#### The project is divided into:
     1) Form Components Folder -> Contains all relevant fields for a contact.
     2) Main Components Folder -> Renders the main component, Contact.jsx, and displays relavant forms.
     3) getData.js contains the requests functions that will be used to fetch, post, and delete data.
 
-## Link to the APP
+#### Link to the APP
     https://contacts-app-reactjs-frontend.herokuapp.com/
     
-## Available Scripts
+#### Available Scripts
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run build`
+#### `npm run build`
 
     
-## If you would like to learn more about the backend, you can visit
-    https://github.com/tahakhan0/Contacts-App-with-Django-Backend
+If you would like to learn more about the backend, you can visit https://github.com/tahakhan0/Contacts-App-with-Django-Backend
   
